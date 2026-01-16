@@ -44,17 +44,11 @@ Risk Signals Engine (SQL): Customer risk is derived using multiple behavioral an
 
 Key Risk Drivers
 
-1. Gambling Spend Ratio
-High gambling spend correlates with impulsive behavior and defaults
-2. Spending Volatility
-Erratic spending patterns indicate unstable cash flow
-3. Loan Health
-4. Active loans → leverage risk
-5. Past defaults → strongest predictor of future default
-6. Income Stress
-Monthly spend exceeding 80% of income indicates low buffer
-7. Account Dormancy
-Long inactivity may signal financial distress or disengagement
+1. Gambling Spend Ratio: High gambling spend correlates with impulsive behavior and defaults
+2. Spending Volatility: Erratic spending patterns indicate unstable cash flow
+3. Loan Health: Active loans -> leverage risk. Past defaults -> strongest predictor of future default
+4. Income Stress: Monthly spend exceeding 80% of income indicates low buffer
+5. Account Dormancy: Long inactivity may signal financial distress or disengagement
 
 Each rule is intentionally explainable, reflecting real-world regulatory constraints in banking.
 
