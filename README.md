@@ -24,6 +24,23 @@ Data was modeled using a star schema:
 - Transaction recency (dormancy)
 5. Converted business rules into a rule-based risk scoring model
 6. Combined all risk signals into a final composite risk score per customer
+### Key Risk Signals Identified
+- Customers spending >20% on gambling showed significantly higher risk
+- Past loan defaults were the strongest predictor of future default
+- High spending volatility indicated unstable financial behavior
+- Customers spending >80% of income had minimal financial buffers
+- Dormant accounts (>90 days inactive) signaled disengagement or distress
+### Impact & Business Value
+- Created a transparent, explainable early-warning risk model
+- Enabled prioritization of high-risk customers for:
+- Credit limit reduction
+- Proactive outreach
+- Stricter lending criteria
+- Designed to be easily audited and adjusted by risk teams
+### Next Steps
+- Incorporate real repayment timelines and delinquency buckets
+- Add customer tenure and account age features
+- Deploy as a scheduled risk monitoring pipeline
 
 
 
