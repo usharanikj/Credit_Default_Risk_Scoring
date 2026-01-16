@@ -40,8 +40,7 @@ This setup allows testing:
 - aggregations
 - real-world query performance
 
-Risk Signals Engine (SQL)
-Customer risk is derived using multiple behavioral and financial signals, each mapped to a score.
+Risk Signals Engine (SQL): Customer risk is derived using multiple behavioral and financial signals, each mapped to a score.
 
 Key Risk Drivers
 
