@@ -5,11 +5,11 @@
 Banks face significant losses from loan defaults, especially when early warning signs are missed. Traditional credit scoring often relies on static attributes like income and credit history, which fail to capture real-time behavioral risk.
 
 #### Objective:
-Build a rule-based customer default risk scoring model using transaction behavior, loan history, and customer demographics — similar to an early-stage credit risk monitoring system used by retail banks.
+Build a rule-based customer default risk scoring model using transaction behavior, loan history, and customer demographics - similar to an early-stage credit risk monitoring system used by retail banks.
 ### Stakeholders
-1. Credit Risk Team – to identify high-risk customers proactively
-2. Collections Team – to prioritize follow-ups
-3. Product & Policy Teams – to refine lending rules and thresholds
+1. Credit Risk Team: To identify high-risk customers proactively
+2. Collections Team: To prioritize follow-ups
+3. Product & Policy Teams: To refine lending rules and thresholds
 ### Data Overview
 A synthetic but realistic banking dataset was generated to simulate production-scale data:
 | Table               | Description                                                   |
@@ -47,7 +47,7 @@ Dormancy can signal job loss, disengagement, or financial distress.
 
 ### Risk Scoring Logic
 A rule-based scoring model converts business intuition into numeric risk points.
-Each rule answers one question: “Does this customer exhibit risky behavior?”
+Each rule answers one question: "Does this customer exhibit risky behavior?"
 
 #### Scoring Examples:
 | Risk Signal                    | Points |
@@ -93,9 +93,8 @@ If deployed in a real banking environment, this model could:
 - Improve collections efficiency by prioritizing top-risk customers
 - Provide transparent, auditable credit decisions
 
-
-
-
+### Final Takeaway
+This project demonstrates how raw transaction data can be transformed into actionable credit risk intelligence using explainable, business-aligned logic - closely reflecting how real-world banks monitor default risk beyond traditional credit scores.
 
 
 #### Tech Stack
