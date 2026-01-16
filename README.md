@@ -58,8 +58,7 @@ Long inactivity may signal financial distress or disengagement
 
 Each rule is intentionally explainable, reflecting real-world regulatory constraints in banking.
 
-Final Risk Score
-The final score is a weighted sum of individual risk signals, producing a single interpretable metric per customer.
+Final Risk Score: The final score is a weighted sum of individual risk signals, producing a single interpretable metric per customer.
 
 Low Risk: Monitoring only  
 Medium Risk: Credit limit review  
