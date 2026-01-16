@@ -29,14 +29,21 @@ Allows safe simulation of sensitive financial use cases while preserving realist
 This mirrors real-world banking data warehouses.
 #### 2. Feature Engineering (Core of the Project)
 Key behavioral metrics were derived using SQL CTEs:
-- Spending Behavior
+##### - Spending Behavior
 1. Average transaction value
 2. Spending volatility (STDDEV)
 3. Estimated monthly spend
 Rationale: Erratic and oversized spending often correlates with financial instability.
-- Gambling Exposure
+##### - Gambling Exposure
 1. % of total spend at gambling merchants
 Gambling-heavy customers are statistically more likely to default.
+##### - Loan Health
+1. Active loan count
+2. Past default history
+Past default is the strongest predictor of future default.
+##### - Transaction Recency
+1. Days since last transaction
+Dormancy can signal job loss, disengagement, or financial distress.
 
 
 
