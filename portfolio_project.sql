@@ -51,9 +51,9 @@ COPY fact_loans FROM '/Users/usharanikj/PyCharmMiscProject/fact_loans.csv' DELIM
 
 -- Verify the Load
 SELECT 
-    (SELECT COUNT(*) FROM dim_customers) as total_customers,
-    (SELECT COUNT(*) FROM fact_transactions) as total_transactions,
-    (SELECT COUNT(*) FROM fact_loans) as total_loans;
+    (SELECT COUNT(*) FROM dim_customers) AS total_customers,
+    (SELECT COUNT(*) FROM fact_transactions) AS total_transactions,
+    (SELECT COUNT(*) FROM fact_loans) AS total_loans;
 
 -- Add an Index (Performance Optimization)
 CREATE INDEX idx_txn_cust_id ON fact_transactions(cust_id);
@@ -129,34 +129,34 @@ scoring_base AS
         c.cust_id,
         c.annual_income,
         -- Rule 1: High Gambling (>20% of spend) -> Strong behavioral signal
-        CASE WHEN g.gambling_ratio > 0.20 THEN 20 ELSE 0 END as score_gambling,
+        CASE WHEN g.gambling_ratio > 0.20 THEN 20 ELSE 0 END AS score_gambling,
 		
         -- Rule 2: Multiple Active Loans -> Over-leveraged customers default more
-        CASE WHEN l.active_loans > 2 THEN 15 ELSE 0 END as score_loans,
+        CASE WHEN l.active_loans > 2 THEN 15 ELSE 0 END AS score_loans,
 		
         -- Rule 3: Previous Default History
-        CASE WHEN l.past_defaults > 0 THEN 25 ELSE 0 END as score_history,
+        CASE WHEN l.past_defaults > 0 THEN 25 ELSE 0 END AS score_history,
 		
         -- Rule 4: High Spend Volatility -> Irregular income/spending patterns (This is intentional -> Heaviest weight)
-        CASE WHEN b.spend_volatility > 1000 THEN 10 ELSE 0 END as score_volatility,
+        CASE WHEN b.spend_volatility > 1000 THEN 10 ELSE 0 END AS score_volatility,
 		
         -- Rule 5: Income to Spend Stress (Spending > 80% of income. Very little buffer → high risk)
-        CASE WHEN b.est_monthly_spend > (c.annual_income / 12) * 0.8 THEN 10 ELSE 0 END as score_debt_stress,
+        CASE WHEN b.est_monthly_spend > (c.annual_income / 12) * 0.8 THEN 10 ELSE 0 END AS score_debt_stress,
 		
        -- Rule 6: New Customer Risk (Tenure < 6 months)
-		CASE WHEN c.join_date > CURRENT_DATE - INTERVAL '6 months' THEN 5 ELSE 0 END as score_tenure,
+		CASE WHEN c.join_date > CURRENT_DATE - INTERVAL '6 months' THEN 5 ELSE 0 END AS score_tenure,
 
         -- Rule 7: Large Single Transaction (Potential fraud/runaway spend) -> Could indicate: Fraud, impulsive spending, risky lifestyle
-        CASE WHEN b.avg_txn_value > 4000 THEN 5 ELSE 0 END as score_large_txn,
+        CASE WHEN b.avg_txn_value > 4000 THEN 5 ELSE 0 END AS score_large_txn,
 		
         -- Rule 8: Account Dormancy -> Long inactivity raises suspicion
-        CASE WHEN r.days_since_last_txn > 90 THEN 5 ELSE 0 END as score_dormancy,
+        CASE WHEN r.days_since_last_txn > 90 THEN 5 ELSE 0 END AS score_dormancy,
 		
         -- Rule 9: Low Income & High Loans -> Thin margin customers are fragile
-        CASE WHEN c.annual_income < 30000 AND l.active_loans > 0 THEN 5 ELSE 0 END as score_low_income_risk,
+        CASE WHEN c.annual_income < 30000 AND l.active_loans > 0 THEN 5 ELSE 0 END AS score_low_income_risk,
 		
         -- Rule 10: Geography Risk (Simulated) -> Placeholder. In real banks this is very real (regulatory risk).
-        CASE WHEN c.country IN ('IN', 'BR') THEN 0 ELSE 0 END as score_geo -- Adjust as per business case
+        CASE WHEN c.country IN ('IN', 'BR') THEN 0 ELSE 0 END AS score_geo -- Adjust as per business case
 		
     FROM dim_customers AS c
     LEFT JOIN gambling_behavior AS g ON c.cust_id = g.cust_id
@@ -169,9 +169,5 @@ SELECT
     *,
     (score_gambling + score_loans + score_history + score_volatility + 
      score_debt_stress + score_large_txn + 
-     score_dormancy + score_low_income_risk + score_geo) as final_risk_score
+     score_dormancy + score_low_income_risk + score_geo) AS final_risk_score
 FROM scoring_base;
-
-
-
-
