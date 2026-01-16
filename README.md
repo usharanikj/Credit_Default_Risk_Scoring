@@ -45,6 +45,24 @@ Past default is the strongest predictor of future default.
 1. Days since last transaction
 Dormancy can signal job loss, disengagement, or financial distress.
 
+### Risk Scoring Logic
+A rule-based scoring model converts business intuition into numeric risk points.
+Each rule answers one question: “Does this customer exhibit risky behavior?”
+
+#### Scoring Examples:
+| Risk Signal                    | Points |
+| ------------------------------ | ------ |
+| Gambling > 20% of spend        | +20    |
+| Past default history           | +25    |
+| More than 2 active loans       | +15    |
+| High spend volatility          | +10    |
+| Spending > 80% of income       | +10    |
+| Long inactivity (>90 days)     | +5     |
+| Large average transaction size | +5     |
+| Low income + active loans      | +5     |
+Final Risk Score = Sum of all rule-based signals
+This mirrors interpretable risk models commonly used in regulated banking environments where explainability is critical.
+
 
 
 
