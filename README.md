@@ -28,8 +28,7 @@ Fact Tables
 fact_transactions – 2M card transactions (amount, date, merchant)
 fact_loans – loan status and outstanding exposure
 
-Data Generation (Python)
-Note: All data is synthetically generated using Python (Faker + NumPy) to simulate realistic distributions while preserving privacy.
+Data Generation (Python): All data is synthetically generated using Python (Faker + NumPy) to simulate realistic distributions while preserving privacy.
 
 - 100,000 customers across multiple geographies
 - 2 million transactions (randomized amounts and dates)
